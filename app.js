@@ -1,11 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const mainRouter = require('./routes/main-route');
 
 const app = express();
 
 app.use(bodyParser.json());
+
+app.use('/files', express.static(path.join('images')));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');

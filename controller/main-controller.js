@@ -1,5 +1,5 @@
 const MainError = require('../models/main-error');
-const instagramGetUrl = require("instagram-url-direct");
+const instareel = require("insta-reel");
 
 const mainController = async (req, res, next) => {
     const { url } = req.body;
@@ -11,10 +11,11 @@ const mainController = async (req, res, next) => {
     }
     let links;
     try {
-        links = await instagramGetUrl(url);
-        res.json({message: 'Links generated successfully', links: links.url_list});
+        links = await instareel(url);
+        res.json({message: 'Got Links', links});
     } catch (err) {
-        return next(new MainError('We are sorry for the inconvenience', 500));
+        console.log(err);
+        res.json({message: 'an error occured'});
     }
 
 }
