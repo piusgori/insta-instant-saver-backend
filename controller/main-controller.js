@@ -12,7 +12,6 @@ const mainController = async (req, res, next) => {
     let links;
     try {
         links = await instagramGetUrl(url);
-        console.log(links);
         res.json({message: 'Links generated successfully', links: links.url_list});
     } catch (err) {
         return next(new MainError('We are sorry for the inconvenience', 500));
