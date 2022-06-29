@@ -4,6 +4,10 @@ const mainController = require('../controller/main-controller');
 
 const router = express.Router();
 
-router.post('/', mainController);
+router.get('/', (req, res, next) => {
+    res.json({message: 'Welcome aboard'});
+})
+
+router.post('/instagram-link', mainController);
 
 module.exports = router;
